@@ -4,6 +4,7 @@ class quickstack::load_balancer::horizon (
  $frontend_admin_host,
  $backend_server_names,
  $backend_server_addrs,
+ $frontend_port = '443 ssl crt /etc/ssl/openstack.pem',
  $backend_port = '80',
  $mode = 'http',
  $option = 'httplog'
@@ -17,7 +18,7 @@ class quickstack::load_balancer::horizon (
                               $frontend_priv_host,
                               $frontend_admin_host ],
 
-    port           => "443 ssl crt /etc/ssl/horizon.pem",
+    port           => $frontend_port,
     mode           => $mode,
     listen_options => {
       'option'     => [ $option ],
@@ -34,7 +35,7 @@ class quickstack::load_balancer::horizon (
     addr                 => [ $frontend_pub_host,
                               $frontend_priv_host,
                               $frontend_admin_host ],
-    port           => "80",
+    port           => $backend_port,
     mode           => $mode,
     listen_options => {
       'option'     => [ $option ],
@@ -54,7 +55,7 @@ class quickstack::load_balancer::horizon (
    addr                 => [ $frontend_pub_host,
                              $frontend_priv_host,
                              $frontend_admin_host ],
-   port           => "80",
+   port           =>  $backend_port,
    mode           => "$mode",
    listen_options => {
      'option'     => [ "$option" ],
