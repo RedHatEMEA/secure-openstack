@@ -7,7 +7,7 @@
   $api_port = '8776',
   $api_mode = 'tcp',
   $backend_port = '8776',
-  $backend_ssl_port = '8776 ssl crt /etc/ssl/horizon.pem',
+  $backend_ssl_port = '8776 ssl crt /etc/ssl/openstack.pem',
   $log = 'tcplog',
 ) {
 
